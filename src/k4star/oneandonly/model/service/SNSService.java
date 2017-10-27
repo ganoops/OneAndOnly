@@ -3,7 +3,10 @@ package k4star.oneandonly.model.service;
 import java.util.List;
 
 import k4star.oneandonly.model.dto.BoardDTO;
-import kosta.model.dto.Electronics;
+import k4star.oneandonly.model.dto.CommentDTO;
+import k4star.oneandonly.model.dto.LikeDTO;
+import k4star.oneandonly.model.dto.NoticeDTO;
+import k4star.oneandonly.model.dto.UserDTO;
 
 public class SNSService {
 	//private static DAO dao   = new ElecDaoImpl();
@@ -133,7 +136,7 @@ public class SNSService {
 	 * @param : writer
 	 * @return : BoardDTO
 	 * */
-	public static int updateLike(LikdeDTO likeDTO) throws Exception{
+	public static int updateLike(LikeDTO likeDTO) throws Exception{
 		return 0;
 	}
 	/**
@@ -149,7 +152,7 @@ public class SNSService {
 	 * @param : writer
 	 * @return : BoardDTO
 	 * */
-	public static List<UserDTO> selectByHash(String name) throws Exception{
+	public static List<UserDTO> selectUser(String name) throws Exception{
 		return null;
 	}
 	/**
