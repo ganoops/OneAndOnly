@@ -24,123 +24,132 @@ public class OneandOnlyDAOImpl implements OneandOnlyDAO {
 	}
 
 	@Override
-	public int UpdateUser(UserDTO dto) throws SQLException {
+	public int updateUser(UserDTO dto) throws SQLException {
 		// TODO Auto-generated method stub
 		return 0;
 	}
 
 	@Override
-	public UserDTO SelectUser(String name) throws SQLException {
+	public UserDTO userDetailView(String nickname) throws SQLException {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
-	public int DeleteUser(String name) throws SQLException {
+	public int deleteUser(String nickname) throws SQLException {
 		// TODO Auto-generated method stub
 		return 0;
 	}
 
 	@Override
-	public List<UserDTO> SelectByNic(String name) throws SQLException {
+	public List<UserDTO> searchByNickname(String nickname) throws SQLException {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
-	public List<UserDTO> SelectBoardWriter(String writer) throws SQLException {
+	public List<BoardDTO> selectBoardListByNickname(String nickname) throws SQLException {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
-	public BoardDTO SelectBoardNum(int num) throws SQLException {
+	public BoardDTO selectBoardByNum(int num) throws SQLException {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
-	public List<BoardDTO> SelectNewsFeed(String writer) throws SQLException {
+	public List<BoardDTO> selectNewsFeed(String nickname) throws SQLException {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
-	public int InsertBoard(BoardDTO dto) throws SQLException {
+	public int insertBoard(BoardDTO dto) throws SQLException {
 		// TODO Auto-generated method stub
 		return 0;
 	}
 
 	@Override
-	public int UpdateBoard(BoardDTO dto) throws SQLException {
+	public int updateBoard(BoardDTO dto) throws SQLException {
 		// TODO Auto-generated method stub
 		return 0;
 	}
 
 	@Override
-	public int DeleteBoard(int num) throws SQLException {
+	public int deleteBoard(int num) throws SQLException {
 		// TODO Auto-generated method stub
 		return 0;
 	}
 
 	@Override
-	public int InsertNotice(NoticeDTO dto) throws SQLException {
+	public int insertNotice(NoticeDTO dto) throws SQLException {
 		// TODO Auto-generated method stub
 		return 0;
 	}
 
 	@Override
-	public List<NoticeDTO> SelectNotice(String name) throws SQLException {
+	public List<NoticeDTO> selectNotice(String nickname) throws SQLException {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
-	public int InsertComment(CommentDTO dto) throws SQLException {
+	public int insertComment(CommentDTO dto) throws SQLException {
 		// TODO Auto-generated method stub
 		return 0;
 	}
 
 	@Override
-	public int DeleteComment(int num) throws SQLException {
+	public int deleteComment(int num) throws SQLException {
 		// TODO Auto-generated method stub
 		return 0;
 	}
 
 	@Override
-	public List<CommentDTO> SelectComment(int num) throws SQLException {
+	public List<CommentDTO> selectComment(int num) throws SQLException {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
-	public int UpdateLike(LikeDTO dto) throws SQLException {
+	public int insertLike(LikeDTO dto) throws SQLException {
 		// TODO Auto-generated method stub
 		return 0;
 	}
 
 	@Override
-	public List<BoardDTO> SelectByHash(String hash) throws SQLException {
+	public int deleteLike(LikeDTO dto) throws SQLException {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+
+	@Override
+	public List<BoardDTO> searchByHashtag(String hash) throws SQLException {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
-	public int InsertFollow(String mynic, String nic) throws SQLException {
+	public int insertFollow(String mynic, String nic) throws SQLException {
 		// TODO Auto-generated method stub
 		return 0;
 	}
 
 	@Override
-	public int DeleteFollow(String mynic, String nic) throws SQLException {
+	public int deleteFollow(String mynic, String nic) throws SQLException {
 		// TODO Auto-generated method stub
 		return 0;
 	}
 
 	@Override
-	public List<UserDTO> SelectFollow(String mynic, String nic) throws SQLException {
+	public List<UserDTO> selectFollow(String mynic) throws SQLException {
 		// TODO Auto-generated method stub
 		return null;
 	}
+
+	
+	
 
 }

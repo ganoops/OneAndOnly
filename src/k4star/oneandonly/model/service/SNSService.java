@@ -1,5 +1,6 @@
 package k4star.oneandonly.model.service;
 
+import java.sql.SQLException;
 import java.util.List;
 
 import k4star.oneandonly.model.dto.BoardDTO;
@@ -12,29 +13,38 @@ public class SNSService {
 	//private static DAO dao   = new ElecDaoImpl();
 	
 	/**
-	 * 회원가입(InsertUser)
+	 * 회원가입(join)
 	 * @param : UserDTO
 	 * @return : 1이면 성공, 아니면 실패
 	 * */
-	public static int insertUser(UserDTO userDTO) throws Exception{
+	public static int join(UserDTO userDTO) throws Exception{
 		return 0;
 	}
 	/**
-	 * 로그인(SelectUser)
+	 * 로그인(login)
 	 * @param : email, pass
 	 * @return : true 성공, false 실패
 	 * */
-	public static boolean selectUser(String email, String pass) throws Exception{
+	public static boolean login(String email, String pass) throws Exception{
 		return false;
 	}
 	/**
-	 * 회원수정(UpdateUser)
+	 * 회원수정(updateUser)
 	 * @param : UserDTO
 	 * @return : 1이면 성공, 아니면 실패
 	 * */
 	public static int updateUser(UserDTO userDTO) throws Exception{
 		return 0;
 	}
+	/**
+	 * 회원 상세 보기
+	 * @param name
+	 * @return
+	 * @throws SQLException
+	 */
+	UserDTO userDetailView(String nickname) throws SQLException{
+		return null;
+	};
 	/**
 	 * 회원삭제(deleteUser)
 	 * @param : email, pass
@@ -72,7 +82,7 @@ public class SNSService {
 	 * @param : writer
 	 * @return : List<BoardDTO>
 	 * */
-	public static List<BoardDTO> selectBoardWriter(String writer) throws Exception{
+	public static List<BoardDTO> selectBoardListByNickname(String writer) throws Exception{
 		return null;
 	}
 	/**
@@ -80,7 +90,7 @@ public class SNSService {
 	 * @param : writer
 	 * @return : List<BoardDTO>
 	 * */
-	public static List<BoardDTO> selectNewspeed(String email) throws Exception{
+	public static List<BoardDTO> selectNewsFeed(String email) throws Exception{
 		return null;
 	}
 	/**
@@ -88,7 +98,7 @@ public class SNSService {
 	 * @param : writer
 	 * @return : BoardDTO
 	 * */
-	public static BoardDTO selectBoardNum(String boardNum) throws Exception{
+	public static BoardDTO selectBoardByNum(String boardNum) throws Exception{
 		return null;
 	}
 	/**
@@ -104,7 +114,7 @@ public class SNSService {
 	 * @param : writer
 	 * @return : BoardDTO
 	 * */
-	public static List<NoticeDTO> selectNotice(String name) throws Exception{
+	public static List<NoticeDTO> selectNotice(String nickname) throws Exception{
 		return null;
 	}
 	/**
@@ -132,19 +142,31 @@ public class SNSService {
 		return null;
 	}
 	/**
-	 * 좋아요 저장
-	 * @param : writer
-	 * @return : BoardDTO
-	 * */
-	public static int updateLike(LikeDTO likeDTO) throws Exception{
+	 * '좋아요' 생성
+	 * @param dto
+	 * @return
+	 * @throws SQLException
+	 */
+	int insertLike(LikeDTO dto) throws SQLException{
 		return 0;
-	}
+	};
+	
+	/**
+	 * '좋아요' 삭제
+	 * @param dto
+	 * @return
+	 * @throws SQLException
+	 */
+	int deleteLike(LikeDTO dto) throws SQLException{
+		return 0;
+	};
+	
 	/**
 	 * 해쉬태그 검색
 	 * @param : writer
 	 * @return : BoardDTO
 	 * */
-	public static List<BoardDTO> selectByHash(String hash) throws Exception{
+	public static List<BoardDTO> searchByHashtag(String hash) throws Exception{
 		return null;
 	}
 	/**
@@ -152,7 +174,7 @@ public class SNSService {
 	 * @param : writer
 	 * @return : BoardDTO
 	 * */
-	public static List<UserDTO> selectUser(String name) throws Exception{
+	public static List<UserDTO> searchByNickname(String nickname) throws Exception{
 		return null;
 	}
 	/**
