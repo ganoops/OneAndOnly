@@ -5,7 +5,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="robots" content="noindex, nofollow">
-	<link rel="stylesheet" href="css/style.css">
+	<link rel="stylesheet" href="${path }/css/style.css">
     <title>post-write</title>
         <meta name="viewport" content="width=device-width, initial-scale=1">
     <script src="//code.jquery.com/jquery-1.10.2.min.js"></script>
@@ -44,7 +44,7 @@
 	   $(".post-write .fileImgNo").click(function(){
 		    $("#file1").click();
 	   		$(".imgDiv").remove();
-	   		$(".fileImgYes").attr("src","img/bg.jpg");
+	   		$(".fileImgYes").attr("src","${path }/img/bg.jpg");
 	   });
    });
    
@@ -57,7 +57,7 @@
                 <div class="col-lg-4">
                     <div class="card">
                     	<div class="fileImg">
-	                        <div class ="imgDiv"><img id ="images" src="img/upload.jpg" class="fileImgNo"></div>
+	                        <div class ="imgDiv"><img id ="images" src="${path }/img/upload.jpg" class="fileImgNo"></div>
 	                        <img id ="images" src="" class="fileImgYes">
 	                        <input type=file id="file1" style="display: none;">
                         </div>

@@ -37,7 +37,7 @@
                   <i class="fa fa-search-plus fa-3x"></i>
                 </div>
               </div>
-              <img class="search-img-fluid" src="img/cabin.png" alt="" >
+              <img class="search-img-fluid" src="${path }/img/cabin.png" alt="" >
             </a>
           </div>
           <div class="col-md-4 search-margin-bottom-20">
@@ -47,7 +47,7 @@
                   <i class="fa fa-search-plus fa-3x"></i>
                 </div>
               </div>
-              <img class="search-img-fluid" src="img/cake.png" alt="">
+              <img class="search-img-fluid" src="${path }/img/cake.png" alt="">
             </a>
           </div>
           <div class="col-md-4 search-margin-bottom-20">
@@ -57,7 +57,7 @@
                   <i class="fa fa-search-plus fa-3x"></i>
                 </div>
               </div>
-              <img class="search-img-fluid" src="img/circus.png" alt="">
+              <img class="search-img-fluid" src="${path }/img/circus.png" alt="">
             </a>
           </div>
           <div class="col-md-4 search-margin-bottom-20">
@@ -67,7 +67,7 @@
                   <i class="fa fa-search-plus fa-3x"></i>
                 </div>
               </div>
-              <img class="search-img-fluid" src="img/game.png" alt="">
+              <img class="search-img-fluid" src="${path }/img/game.png" alt="">
             </a>
           </div>
           <div class="col-md-4 search-margin-bottom-20">
@@ -77,7 +77,7 @@
                   <i class="fa fa-search-plus fa-3x"></i>
                 </div>
               </div>
-              <img class="search-img-fluid" src="img/safe.png" alt="">
+              <img class="search-img-fluid" src="${path }/img/safe.png" alt="">
             </a>
           </div>
           <div class="col-md-4 search-margin-bottom-20">
@@ -87,7 +87,7 @@
                   <i class="fa fa-search-plus fa-3x"></i>
                 </div>
               </div>
-              <img class="search-img-fluid" src="img/submarine.png" alt="">
+              <img class="search-img-fluid" src="${path }/img/submarine.png" alt="">
             </a>
           </div>
         </div>

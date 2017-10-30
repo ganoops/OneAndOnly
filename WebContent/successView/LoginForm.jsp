@@ -399,13 +399,13 @@ margin-left: 30px;
     
     <div class="cont_back_info">
        <div class="cont_img_back_grey">
-       <img src="img/bg3.jpg" alt="" />
+       <img src="${path }/img/bg3.jpg" alt="" />
        </div>
        
     </div>
 <div class="cont_forms" >
     <div class="cont_img_back_">
-       <img src="img/bg3.jpg" alt="" />
+       <img src="${path }/img/bg3.jpg" alt="" />
        </div>
  <div class="cont_form_login">
 <a href="#" onclick="ocultar_login_sign_up()" ><i class="material-icons">&#xE5C4;</i></a>
