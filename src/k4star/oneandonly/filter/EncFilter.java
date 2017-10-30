@@ -25,7 +25,7 @@ public class EncFilter implements Filter {
 
 	public void doFilter(ServletRequest request, ServletResponse response, FilterChain chain) throws IOException, ServletException {
 		request.setCharacterEncoding(encoding);
-		System.out.println("doFilter() ::::::: "+encoding);
+		//System.out.println("doFilter() ::::::: "+encoding);
 		chain.doFilter(request, response);
 		
 	}

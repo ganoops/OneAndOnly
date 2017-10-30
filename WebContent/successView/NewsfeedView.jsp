@@ -10,7 +10,6 @@
 <script src="${path}/js/jquery-3.2.1.js"></script>
 </head>
 <body>
-
 <header class="container-fuild fixed navbar-fixed-top" id="navbar">
 	<div class="container-fuild">
 		<div class="container">
@@ -42,12 +41,11 @@
 				</div>
 				<!-- icons -->
 				<div class="col-md-2 col-md-offset-2 navIcons">
-					<a href=""><i class="glyphicon glyphicon-th-large"></i></a>
+					<a href="${path}/oao?command=SelectUser&userEmail=a@aa"><i class="glyphicon glyphicon-th-large"></i></a>
 					<a href=""><i class="glyphicon glyphicon-camera"></i></a>
 					<a href=""><i class="glyphicon glyphicon-heart"></i></a>
-					<a href=""><i class="glyphicon glyphicon-user"></i></a>
+					<a href="${path}/oao?command=SelectUser&userEmail=${sessionScope.userEmail}"><i class="glyphicon glyphicon-user"></i></a>
 				</div>
-				
 			</div><!-- row End -->
 		</div>
 	</div>

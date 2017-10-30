@@ -199,4 +199,22 @@ public interface OneandOnlyDAO {
 	 * @throws SQLException
 	 */
 	List<UserDTO> selectFollow(String mynic) throws SQLException;
+	
+	/**
+	 * 팔로워 수 가져오기
+	 * @param mynic
+	 * @param nic
+	 * @return
+	 * @throws SQLException
+	 */
+	public int countFollower(String email) throws SQLException;
+	
+	/**
+	 * 팔로우 수 가져오기
+	 * @param mynic
+	 * @param nic
+	 * @return
+	 * @throws SQLException
+	 */
+	public int countFollow(String email) throws SQLException;
 }
