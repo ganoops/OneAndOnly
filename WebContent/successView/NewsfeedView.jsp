@@ -5,9 +5,9 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>One & Only</title>
-<link href="css/style.css" rel="stylesheet">
+<link href="${path}/css/style.css" rel="stylesheet">
 <link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
-<script src="js/jquery-3.2.1.js"></script>
+<script src="${path}/js/jquery-3.2.1.js"></script>
 </head>
 <body>
 
@@ -17,19 +17,27 @@
 			<div class="row">
 				<!-- logo -->  
 				<div class="col-md-2 logo">
-					<img src="img/logo4.png" alt="logo" width="65%">
+					<img src="${path}/img/logo4.png" alt="logo" width="65%">
 				</div>
 				<!-- search -->
 				<div class="col-md-4 col-md-offset-2 search">
 					<form method="post" action="">
-					<div class="input-group stylish-input-group">
-	                    <input type="text" class="form-control"  placeholder="Search" >
-	                    <span class="input-group-addon">
-	                        <button type="submit">
-	                            <i class="glyphicon glyphicon-search"></i>
-	                        </button>  
-	                    </span>
-	                </div>
+						<div class="input-group stylish-input-group">
+							<select class="form-control" name="type" style="width:90px">
+								<option value="사용자">사용자</option>
+								<option value="태그">태그</option>
+								<option value="내용">내용</option>
+							</select>
+							
+							<div class="input-group custom-search-form">
+	                            <input type="text" class="form-control" name="search" placeholder="Search...">
+	                                <span class="input-group-btn">
+	                                    <button class="btn btn-default" type="submit">
+	                                      <i class="glyphicon glyphicon-search">search</i>
+	                                    </button>
+	                                </span>
+	                        </div>
+		                </div>
 	                </form>
 				</div>
 				<!-- icons -->
