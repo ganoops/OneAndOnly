@@ -55,5 +55,51 @@ $(function() {
             $(".image-preview").attr("data-content",$(img)[0].outerHTML).popover("show");
         }        
         reader.readAsDataURL(file);
+        
+        
     });  
+    
+    $("#update").click(function(){
+    	var url = $("#url").val();
+    	var nicknameCheck = $("#nicknameCheckResult").text();
+    	if(nicknameCheck.indexOf("이미")!= -1){
+    		alert("닉네임을 확인하세요");
+    		return;
+    	}
+		$("#updateForm").ajaxForm({
+			type: "post", 
+			url: url, 
+			dataType: "text",
+			success: function(result){
+				alert(result+"");
+			},
+			error: function(err){
+				alert("회원 수정 오류요~ " + err);
+			} 
+		});
+		$("#updateForm").submit();
+		location.reload();
+	});
+    
+    $("#nickname").keyup(function(){
+    	var path = $("#path").val();
+    	var originNickname = $("#originNickname").val();
+    	if(originNickname==$(this).val()){
+    		$("#nicknameCheckResult").html("");
+    		return;
+    	}
+    	$.ajax({
+			type : "post",	//전송방식(get, post)
+			url : "oao",	//서버 주소
+			data : "command=nicknameCheck&nickname="+$(this).val(), 	//서버에게 보낼 데이터(param 정보)
+			dataType : "text",	//서버가 보내온 데이터 타입(text, html, xml, json)
+			success : function(result){
+				$("#nicknameCheckResult").html(result);
+			},	//성공했을 때 콜백 함수
+			error : function(err){
+				alert('오류가 발생했어요~' + err);
+			} 	//실패했을 때 콜백 함수
+		});
+	});
+   
 });

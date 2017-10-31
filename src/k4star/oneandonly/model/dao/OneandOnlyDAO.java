@@ -247,4 +247,12 @@ public interface OneandOnlyDAO {
 	 * @throws SQLException
 	 */
 	public List<BoardDTO> selectBoard(String mynic) throws SQLException;
+	
+	/**
+	 * 닉네임 중복 확인
+	 * @param nickname
+	 * @return
+	 * @throws SQLException
+	 */
+	boolean nicknameCheck(String nickname)throws SQLException;
 }

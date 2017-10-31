@@ -41,8 +41,31 @@ public class OneandOnlyDAOImpl implements OneandOnlyDAO {
 
 	@Override
 	public int updateUser(UserDTO dto) throws SQLException {
-		// TODO Auto-generated method stub
-		return 0;
+		Connection con = null;
+		PreparedStatement ps = null;
+		String sql = "UPDATE SNS_USER SET  PHONE = ?, INTRODUCE = ?, PROFILE_PIC = ? WHERE EMAIL = ?";
+		if(dto.getProfile_pic()==null) {
+			sql = "UPDATE SNS_USER SET  PHONE = ?, INTRODUCE = ? WHERE EMAIL = ?";
+		}
+		int result = 0;
+		try {
+			con = DBUtil.getConnection();
+			ps = con.prepareStatement(sql);
+			if(dto.getProfile_pic()==null) {
+				ps.setString(1, dto.getPhone());
+				ps.setString(2, dto.getIntroduce());
+				ps.setString(3, dto.getEmail());
+			}else {
+				ps.setString(1, dto.getPhone());
+				ps.setString(2, dto.getIntroduce());
+				ps.setString(3, dto.getProfile_pic());
+				ps.setString(4, dto.getEmail());
+			}
+			result = ps.executeUpdate();
+		}finally {
+			DBUtil.dbClose(con, ps);
+		}
+		return result;
 	}
 	
 	/**
@@ -50,7 +73,7 @@ public class OneandOnlyDAOImpl implements OneandOnlyDAO {
 	 * (계정 상세보기, 계정 수정?)
 	 */
 	@Override
-	public UserDTO userDetailView(String nickname) throws SQLException {
+	public UserDTO userDetailView(String email) throws SQLException {
 		Connection con = null;
 		PreparedStatement st = null;
 		ResultSet rs = null;
@@ -60,7 +83,7 @@ public class OneandOnlyDAOImpl implements OneandOnlyDAO {
 			con = DBUtil.getConnection();
 			st = con.prepareStatement("select nickname, profile_pic, email, password, phone, introduce, join_date"
 					+ " from sns_user where email = ?");
-			st.setString(1, nickname);
+			st.setString(1, email);
 			rs = st.executeQuery();
 			
 			if(rs.next()) {
@@ -371,4 +394,26 @@ public class OneandOnlyDAOImpl implements OneandOnlyDAO {
 		// TODO Auto-generated method stub
 		return false;
 	}
+
+	@Override
+	public boolean nicknameCheck(String nickname) throws SQLException {
+		Connection con = null;
+		PreparedStatement ps = null;
+		ResultSet rs = null;
+		String sql = "SELECT NICKNAME FROM SNS_USER WHERE NICKNAME = ?";
+		try {
+			con = DBUtil.getConnection();
+			ps = con.prepareStatement(sql);
+			ps.setString(1, nickname);
+			rs = ps.executeQuery();
+			if(rs.next()) {
+				return true;
+			}
+		}finally {
+			DBUtil.dbClose(con, ps, rs);
+		}
+		return false;
+	}
+	
+	
 }

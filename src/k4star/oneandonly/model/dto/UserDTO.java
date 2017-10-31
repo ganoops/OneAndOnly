@@ -24,6 +24,14 @@ public class UserDTO {
 		this.join_date = join_date;
 	}
 
+	public UserDTO(String nickname, String profile_pic, String email, String phone, String introduce) {
+		this.nickname = nickname;
+		this.profile_pic = profile_pic;
+		this.email = email;
+		this.phone = phone;
+		this.introduce = introduce;
+	}
+
 	public String getNickname() {
 		return nickname;
 	}

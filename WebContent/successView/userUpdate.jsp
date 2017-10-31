@@ -32,69 +32,10 @@
     margin-left:2px;
 }
 </style>
-<script type="text/javascript" src="../js/jquery-3.2.1.min.js"></script>
+<script type="text/javascript" src="${path}/js/jquery-3.2.1.min.js"></script>
+<script type="text/javascript" src="${path}/js/jquery.form.min.js"></script>
+<script type="text/javascript" src="${path}/js/userUpdate.js"></script>
 <script type="text/javascript" src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
-<script type="text/javascript">
-$(document).on('click', '#close-preview', function(){ 
-    $('.image-preview').popover('hide');
-    // Hover befor close the preview
-    $('.image-preview').hover(
-        function () {
-           $('.image-preview').popover('show');
-        }, 
-         function () {
-           $('.image-preview').popover('hide');
-        }
-    );    
-});
-
-$(function() {
-    // Create the close button
-    var closebtn = $('<button/>', {
-        type:"button",
-        text: 'x',
-        id: 'close-preview',
-        style: 'font-size: initial;',
-    });
-    closebtn.attr("class","close pull-right");
-    // Set the popover default content
-    $('.image-preview').popover({
-        trigger:'manual',
-        html:true,
-        title: "<strong>Preview</strong>"+$(closebtn)[0].outerHTML,
-        content: "There's no image",
-        placement:'bottom'
-    });
-    // Clear event
-    $('.image-preview-clear').click(function(){
-        $('.image-preview').attr("data-content","").popover('hide');
-        $('.image-preview-filename').val("");
-        $('.image-preview-clear').hide();
-        $('.image-preview-input input:file').val("");
-        $(".image-preview-input-title").text("Browse"); 
-    }); 
-    // Create the preview image
-    $(".image-preview-input input:file").change(function (){     
-        var img = $('<img/>', {
-            id: 'dynamic',
-            width:250,
-            height:200
-        });      
-        var file = this.files[0];
-        var reader = new FileReader();
-        // Set preview image into the popover data-content
-        reader.onload = function (e) {
-            $(".image-preview-input-title").text("Change");
-            $(".image-preview-clear").show();
-            $(".image-preview-filename").val(file.name);
-            img.attr('src', e.target.result);
-            img.attr('class', "img-circle");
-            $(".image-preview").attr("data-content",$(img)[0].outerHTML).popover("show");
-        }        
-        reader.readAsDataURL(file);
-    });  
-});
-</script>
 </head>
 <body>
 <div class="container">
@@ -105,17 +46,15 @@ $(function() {
 	      	<!--  col-xs-12 col-md-6 col-md-offset-3 col-sm-8 col-sm-offset-2 -->
     		<h1>Edit Profile</h1>
     		<hr>
-    		<form action="" method="POST">
-    		
+    		<form action="" method="post" id="updateForm" enctype="multipart/form-data">
+    		<input type="hidden" value="${path}/oao?command=UpdateUser&email=${user.email}" id="url"/>
+    		<input type="hidden" value="${path}" id="path"/>
     			<div class="form-group">
-    		       <a href="#">
-	    		        	<img src="${path }/img/bg3.jpg" class="img-circle center-block" alt="profile" width="200px" height="200px" id="profile_pic">
-	    		        </a> 
+	    		     <img src="${path}/save/${user.email}/${user.profile_pic}" class="img-circle center-block" alt="profile" width="200px" height="200px" id="profile_pic">
     		    </div>
-    		
     			<div class="form-group">
 		            <div class="input-group image-preview">
-		                <input type="text" class="form-control image-preview-filename" disabled="disabled" placeholder="Browse Your New Profile Pic"> <!-- don't give a name === doesn't send on POST/GET -->
+		                <input type="text" class="form-control image-preview-filename" disabled="disabled" placeholder="Browse Your New Profile Pic" name="newProfilePic"> <!-- don't give a name === doesn't send on POST/GET -->
 		                <span class="input-group-btn">
 		                    <!-- image-preview-clear button -->
 		                    <button type="button" class="btn btn-default image-preview-clear" style="display:none;">
@@ -125,7 +64,7 @@ $(function() {
 		                    <div class="btn btn-default image-preview-input">
 		                        <span class="glyphicon glyphicon-folder-open"></span>
 		                        <span class="image-preview-input-title">Browse</span>
-		                        <input type="file" accept="image/png, image/jpeg, image/gif" name="input-file-preview"/> <!-- rename it -->
+		                        <input type="file" accept="image/png, image/jpeg, image/gif" name="file" value="${user.profile_pic}"/> <!-- rename it -->
 		                    </div>
 		                </span>
 		            </div><!-- /input-group image-preview [TO HERE]--> 
@@ -134,22 +73,24 @@ $(function() {
     		    
     		    <div class="form-group">
     		        <label for="email">email<span class="require">*</span> </label>
-    		        <input type="text" class="form-control" name="email" readonly/>
+    		        <input type="email" class="form-control" name="email" value="${user.email}" readonly/>
     		    </div>
     		    
-    		    <div class="form-group">
+    			<div class="form-group">
     		        <label for="nickname">계정명(nickname)<span class="require">*</span></label>
-    		        <input type="text" class="form-control" name="nickname" />
+    		        <input type="text" class="form-control" name="nickname" value="${user.nickname}" id="nickname"/>
+    		        <input type="hidden" value="${user.nickname}" id="originNickname"/>
+    		      	<span id="nicknameCheckResult"></span>
     		    </div>
-    		    
+    		   
     		     <div class="form-group">
     		        <label for="phone">전화번호<span class="require">*</span><small>('-' 없이 입력하세요.)</small></label>
-    		        <input type="text" class="form-control" name="phone" />
+    		        <input type="text" class="form-control" name="phone" value="${user.phone}"/>
     		    </div>
     		    
     		    <div class="form-group">
     		        <label for="introduction">자기소개</label>
-    		        <textarea rows="5" class="form-control" name="introduction" ></textarea>
+    		        <textarea rows="5" class="form-control" name="introduce" >${user.introduce}</textarea>
     		    </div>
     		    
     		    <div class="form-group">
@@ -157,9 +98,7 @@ $(function() {
     		    </div>
     		    
     		    <div class="form-group">
-    		        <button type="submit" class="btn btn-primary">
-    		            정보 수정하기
-    		        </button>
+    		        <input type="button" id="update" class="btn btn-primary" value="프로필 수정">
     		    </div>
     		    
     		</form>

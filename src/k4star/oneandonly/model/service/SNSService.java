@@ -38,7 +38,8 @@ public class SNSService {
 	 * @return : 1이면 성공, 아니면 실패
 	 * */
 	public static int updateUser(UserDTO userDTO) throws Exception{
-		return 0;
+		int result = dao.updateUser(userDTO);
+		return result;
 	}
 	/**
 	 * 회원 상세 보기
@@ -46,9 +47,9 @@ public class SNSService {
 	 * @return
 	 * @throws SQLException
 	 */
-	public static UserDTO userDetailView(String nickname) throws SQLException{
+	public static UserDTO userDetailView(String email) throws SQLException{
 		OneandOnlyDAO dao = new OneandOnlyDAOImpl();
-		return dao.userDetailView(nickname);
+		return dao.userDetailView(email);
 	}
 	/**
 	 * 회원삭제(deleteUser)
@@ -263,7 +264,16 @@ public class SNSService {
 		return dao.selectBoard(mynic);
 	}
 	
-	
+	/**
+	 * 닉네임 중복체크
+	 * @param nickname
+	 * @return
+	 * @throws SQLException
+	 */
+	public static boolean nicknameCheck(String nickname) throws SQLException {
+		boolean result = dao.nicknameCheck(nickname);
+		return result;
+	}
 	
 }
 

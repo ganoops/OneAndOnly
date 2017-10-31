@@ -67,10 +67,13 @@
 			
 			<div class="col-md-8 search-padding-bottom-50" id="detail-padding">
 				<h1> ${user['nickname']} 
+				<form name="form" action="${path}/oao" method="post">
+				<input type="hidden" name="command" value="updateForm">
+				<input type="hidden" name="email" value="${userEmail}">
 				<!-- 로그인 한 회원이면 -->
 				<c:choose>
 					<c:when test="${user['email'] eq userEmail}">
-						<input type="button" value="프로필 편집" class="modify_profile">
+						<input type="submit" value="프로필 편집" class="modify_profile">
 						<!-- <input type="button" value="▼" class="detail_btn1"> 
 						<input type="button" value="●●●" class="detail_btn2"> -->
 					</c:when>
@@ -78,7 +81,7 @@
 						<input type="button" value="팔로잉" class="profileBtn ${profileClass}" id="profileBtnID" data-email="${user['email'] }">
 					</c:otherwise>
 				</c:choose>
-				
+				</form>
 				</h1>
 			<div class="col-md-8 ">
 				<span> 게시물 </span> <span class="detail-span" > ${board.size() } </span>
