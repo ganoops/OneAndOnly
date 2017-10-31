@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -41,7 +42,7 @@
 				</div>
 				<!-- icons -->
 				<div class="col-md-2 col-md-offset-2 navIcons">
-					<a href="${path}/oao?command=SelectUser&userEmail=a@aa"><i class="glyphicon glyphicon-th-large"></i></a>
+					<a href="${path}/oao?command=SelectUser&userEmail=test2@google.com"><i class="glyphicon glyphicon-th-large"></i></a>
 					<a href=""><i class="glyphicon glyphicon-camera"></i></a>
 					<a href=""><i class="glyphicon glyphicon-heart"></i></a>
 					<a href="${path}/oao?command=SelectUser&userEmail=${sessionScope.userEmail}"><i class="glyphicon glyphicon-user"></i></a>
@@ -54,52 +55,23 @@
 <div class="container-fuild news-content">
 	<div class="container">
 		<div class="row">
-			
-			<!-- view -->
-			<div class="col-md-6 col-md-offset-3 news-view">
-				<div class="news-view-wrap">
-					<!-- photo -->
-					<div class="news-view-img">
-						<img src="" alt="">
-					</div>
-					<!-- content(name,heart) -->
-					<div class="news-view-content">
-						<a href="">김수아</a>
-						<a href="#"><i class="glyphicon glyphicon-heart-empty"></i></a>
-					</div>
-				</div>
-			</div>
-			
-			<!-- view -->
-			<div class="col-md-6 col-md-offset-3 news-view">
-				<div class="news-view-wrap">
-					<!-- photo -->
-					<div class="news-view-img">
-						<img src="" alt="">
-					</div>
-					<!-- content(name,heart) -->
-					<div class="news-view-content">
-						<a href="">김수아</a>
-						<a href="#"><i class="glyphicon glyphicon-heart-empty"></i></a>
+		
+			<c:forEach items="${list }" var="listView">
+				<!-- view -->
+				<div class="col-md-6 col-md-offset-3 news-view">
+					<div class="news-view-wrap">
+						<!-- photo -->
+						<div class="news-view-img">
+							<img src="${listView.photo }" alt="photo">
+						</div>
+						<!-- content(name,heart) -->
+						<div class="news-view-content">
+							<a href="">${listView.nickname }</a>
+							<a href="#"><i class="glyphicon glyphicon-heart-empty"></i></a>
+						</div>
 					</div>
 				</div>
-			</div>
-			
-			<!-- view -->
-			<div class="col-md-6 col-md-offset-3 news-view">
-				<div class="news-view-wrap">
-					<!-- photo -->
-					<div class="news-view-img">
-						<img src="" alt="">
-					</div>
-					<!-- content(name,heart) -->
-					<div class="news-view-content">
-						<a href="">김수아</a>
-						<a href="#"><i class="glyphicon glyphicon-heart-empty"></i></a>
-					</div>
-				</div>
-			</div>
-			
+			</c:forEach>
 			
 		</div><!-- row End -->
 	</div>

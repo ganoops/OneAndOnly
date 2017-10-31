@@ -9,14 +9,15 @@ public class BoardDTO {
 	private String photo;
 	
 	public BoardDTO() {}
-
-	public BoardDTO(int board_num, String nickname, String write_date, String content, String photo) {
-		super();
-		this.board_num = board_num;
+	public BoardDTO(String nickname, String content, String photo) {
 		this.nickname = nickname;
-		this.write_date = write_date;
 		this.content = content;
 		this.photo = photo;
+	}
+	public BoardDTO(int board_num, String nickname, String write_date, String content, String photo) {
+		this(nickname,content,photo);
+		this.board_num = board_num;
+		this.write_date = write_date;
 	}
 
 	public int getBoard_num() {

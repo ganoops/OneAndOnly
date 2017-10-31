@@ -7,6 +7,7 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>One & Only</title>
 <link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+<script src="${path }/js/jquery-3.2.1.js"></script>
 </head>
 <body>
 
@@ -23,14 +24,38 @@
 		  padding: 0;
 		  list-style:none;
 		  }
-			
+		
+		.modify_profile{
+			background:none; border:1px solid #dbdbdb; padding:5px 10px; font-size:15px; color:#444;
+			border-radius:5px;
+		}	
+		.detail_btn1{
+			background:#ffe3e7; border:0px; font-size:13px; width:30px; height:30px;
+		}
+		.detail_btn2{
+			background:white; border:0px; font-size:5px;width:30;height:30px;
+		}
+		
+		.profileBtn{
+			padding:5px 10px; font-size:15px;
+			border-radius:5px;
+			outline:none;
+		}
+		.followingBtn{
+			background:none; border:1px solid #dbdbdb;
+		}
+		.followBtn{
+			background:#3897f0;
+			border:none;
+			color:white;
+		}
 	</style>
+	<!-- 내 계정프로필이 아닐경우 -->
 	
 	<c:choose>
-		<c:when test="${user['email'] eq userEmail}"></c:when>
+		<c:when test="${followCheck == 0 }"><c:set var="profileClass" value="followBtn"/></c:when>
+		<c:otherwise><c:set var="profileClass" value="followingBtn"/></c:otherwise>
 	</c:choose>
-	
-	
 	<!-- 상세계정 프로필 부분 -->
 	<div class="container">
 		<div class="row" >
@@ -45,23 +70,19 @@
 				<!-- 로그인 한 회원이면 -->
 				<c:choose>
 					<c:when test="${user['email'] eq userEmail}">
-						<input type="button" value="팔로잉" 
-						style="background:#ffe3e7; border:0px; font-size:18px; width:100px; height:30px; ">
-						<input type="button" value="▼"
-						style="background:#ffe3e7; border:0px; font-size:13px; width:30px; height:30px;"> 
-						<input type="button" value="●●●" 
-						style="background:white; border:0px; font-size:5px;width:30;height:30px">
+						<input type="button" value="프로필 편집" class="modify_profile">
+						<!-- <input type="button" value="▼" class="detail_btn1"> 
+						<input type="button" value="●●●" class="detail_btn2"> -->
 					</c:when>
 					<c:otherwise>
-						<input type="button" value="팔로잉" id = "follow"
-						style="background:blue; border:0px; font-size:18px; width:100px; height:30px; ">
+						<input type="button" value="팔로잉" class="profileBtn ${profileClass}" id="profileBtnID" data-email="${user['email'] }">
 					</c:otherwise>
 				</c:choose>
 				
 				</h1>
 			<div class="col-md-8 ">
 				<span> 게시물 </span> <span class="detail-span" > ${board.size() } </span>
-				<span> 팔로워 </span> <span class="detail-span"> ${follower}  </span>
+				<span> 팔로워 </span> <span class="detail-span followerView"> ${follower}  </span>
 				<span> 팔로우 </span> <span> ${follow}  </span>	
 				</h4>
 			</div>
@@ -98,6 +119,42 @@
         
       </div>
     </section>
-	
+    
+<script>
+	$("#profileBtnID").on("click",function(){
+		//만약 following중이면
+		var uu = "DeleteFollow";
+		var fo = $(".followerView").text();
+		
+		if($(this).hasClass("followingBtn")){
+			$(this).removeClass("followingBtn");
+			$(this).addClass("followBtn");
+			alert("언팔");
+		}else{//follow
+			$(this).removeClass("followBtn");
+			$(this).addClass("followingBtn");
+			uu = "InsertFollow";
+			alert("팔로우");
+		}
+		$.ajax({
+			type:"post",
+			url:'${path}'+"/oao?command="+uu,
+			data:{email:$(this).attr("data-email")},
+			success:function(e){
+				if(e == 1){
+					$(".followerView").text(parseInt(fo)+1);
+				}else if(e == 2){
+					$(".followerView").text(parseInt(fo)-1);
+				}
+			},
+			error:function(err){
+				
+			}
+			
+		});
+		
+	});
+</script>	
+
 </body>
 </html>

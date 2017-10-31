@@ -14,6 +14,6 @@
 <body>
 	<h1>One and Only go</h1>
 	<a href="${path}/oao?command=insert">do something</a>
-	<a href="#">aaa</a>
+	<a href="${path}/oao?command=SelectBoard">newsfeed</a>
 </body>
 </html>

@@ -49,7 +49,7 @@ public class SNSService {
 	public static UserDTO userDetailView(String nickname) throws SQLException{
 		OneandOnlyDAO dao = new OneandOnlyDAOImpl();
 		return dao.userDetailView(nickname);
-	};
+	}
 	/**
 	 * 회원삭제(deleteUser)
 	 * @param : email, pass
@@ -58,13 +58,15 @@ public class SNSService {
 	public static int deleteUser(String Email, String pass) throws Exception{
 		return 0;
 	}
+
 	/**
 	 * 게시물작성(InsertBoard)
 	 * @param : email, pass
 	 * @return : 1이면 성공, 아니면 실패
 	 * */
 	public static int insertBoard(BoardDTO boardDTO) throws Exception{
-		return 0;
+		OneandOnlyDAO dao = new OneandOnlyDAOImpl();
+		return dao.insertBoard(boardDTO);
 	}
 	/**
 	 * 게시물 수정(updateBoard)
@@ -209,7 +211,8 @@ public class SNSService {
 	 * @return : BoardDTO
 	 * */
 	public static int insertFollow(String mynic, String nic) throws Exception{
-		return 0;
+		OneandOnlyDAO dao = new OneandOnlyDAOImpl();
+		return dao.insertFollow(mynic, nic);
 	}
 	/**
 	 * 팔로워 삭제
@@ -217,7 +220,8 @@ public class SNSService {
 	 * @return : BoardDTO
 	 * */
 	public static int deleteFollow(String mynic, String nic) throws Exception{
-		return 0;
+		OneandOnlyDAO dao = new OneandOnlyDAOImpl();
+		return dao.deleteFollow(mynic, nic);
 	}
 	/**
 	 * 팔로워 검색
@@ -227,7 +231,7 @@ public class SNSService {
 	public static List<UserDTO> selectFollow(String mynic) throws Exception{
 		return null;
 	}
-	
+
 	/**
 	 * 팔로워 갯수
 	 */
@@ -241,6 +245,22 @@ public class SNSService {
 	public static int countFollow(String mynic) throws Exception{
 		OneandOnlyDAO dao = new OneandOnlyDAOImpl();
 		return dao.countFollow(mynic);
+	}
+	/**
+	 * 팔로우 확인
+	 * 내 이메일, 상대방 이메일 받음
+	 */
+	public static int followCheck(String mynic, String othernic) throws Exception{
+		OneandOnlyDAO dao = new OneandOnlyDAOImpl();
+		return dao.followCheck(mynic, othernic);
+	}
+	/**
+	 * 뉴스피드
+	 * 계정명
+	 */
+	public static List<BoardDTO> selectBoard(String mynic) throws Exception{
+		OneandOnlyDAO dao = new OneandOnlyDAOImpl();
+		return dao.selectBoard(mynic);
 	}
 	
 	
