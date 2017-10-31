@@ -109,7 +109,7 @@ $(function() {
     		
     			<div class="form-group">
     		       <a href="#">
-	    		        	<img src="../img/bg3.jpg" class="img-circle center-block" alt="profile" width="200px" height="200px" id="profile_pic">
+	    		        	<img src="${path }/img/bg3.jpg" class="img-circle center-block" alt="profile" width="200px" height="200px" id="profile_pic">
 	    		        </a> 
     		    </div>
     		

@@ -10,7 +10,7 @@ public class SelectBoardAction implements Action {
 
 	@Override
 	public void execute(HttpServletRequest request, HttpServletResponse respons) throws ServletException, IOException {
-		// TODO Auto-generated method stub
+	
 
 	}
 

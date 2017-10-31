@@ -46,8 +46,9 @@ public class SNSService {
 	 * @return
 	 * @throws SQLException
 	 */
-	UserDTO userDetailView(String nickname) throws SQLException{
-		return null;
+	public static UserDTO userDetailView(String nickname) throws SQLException{
+		OneandOnlyDAO dao = new OneandOnlyDAOImpl();
+		return dao.userDetailView(nickname);
 	};
 	/**
 	 * È¸¿ø»èÁ¦(deleteUser)
@@ -87,7 +88,8 @@ public class SNSService {
 	 * @return : List<BoardDTO>
 	 * */
 	public static List<BoardDTO> selectBoardListByNickname(String writer) throws Exception{
-		return null;
+		OneandOnlyDAO dao = new OneandOnlyDAOImpl();
+		return dao.selectBoardListByNickname(writer);
 	}
 	/**
 	 * ´º½ºÇÇµå
@@ -225,6 +227,23 @@ public class SNSService {
 	public static List<UserDTO> selectFollow(String mynic) throws Exception{
 		return null;
 	}
+	
+	/**
+	 * ÆÈ·Î¿ö °¹¼ö
+	 */
+	public static int countFollower(String mynic) throws Exception{
+		OneandOnlyDAO dao = new OneandOnlyDAOImpl();
+		return dao.countFollower(mynic);
+	}
+	/**
+	 * ÆÈ·Î¿ì °¹¼ö
+	 */
+	public static int countFollow(String mynic) throws Exception{
+		OneandOnlyDAO dao = new OneandOnlyDAOImpl();
+		return dao.countFollow(mynic);
+	}
+	
+	
 	
 }
 

@@ -426,13 +426,21 @@ margin-left: 30px;
     
     <div class="cont_back_info">
        <div class="cont_img_back_grey">
+<<<<<<< HEAD
        <img src="../img/bg3.jpg" alt="" />
+=======
+       <img src="${path }/img/bg3.jpg" alt="" />
+>>>>>>> branch 'master' of https://github.com/ganoops/OneAndOnly
        </div>
        
     </div>
 <div class="cont_forms" >
     <div class="cont_img_back_">
+<<<<<<< HEAD
        <img src="../img/bg3.jpg" alt="" />
+=======
+       <img src="${path }/img/bg3.jpg" alt="" />
+>>>>>>> branch 'master' of https://github.com/ganoops/OneAndOnly
        </div>
 <form id="loginForm" method="post" action="${path}/oao?command=SelectUser">
  <div class="cont_form_login">

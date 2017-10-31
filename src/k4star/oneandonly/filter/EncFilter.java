@@ -25,6 +25,7 @@ public class EncFilter implements Filter {
 
 	public void doFilter(ServletRequest request, ServletResponse response, FilterChain chain) throws IOException, ServletException {
 		request.setCharacterEncoding(encoding);
+<<<<<<< HEAD
 		chain.doFilter(request, response);
 		
 	}
@@ -33,6 +34,17 @@ public class EncFilter implements Filter {
 	public void init(FilterConfig fConfig) throws ServletException {
 		encoding = fConfig.getInitParameter("encoding");
 	
+=======
+		//System.out.println("doFilter() ::::::: "+encoding);
+		chain.doFilter(request, response);
+		
+	}
+
+	
+	public void init(FilterConfig fConfig) throws ServletException {
+		encoding = fConfig.getInitParameter("encoding");
+		System.out.println("init() ::::::: "+encoding);
+>>>>>>> branch 'master' of https://github.com/ganoops/OneAndOnly
 	}
 
 }
