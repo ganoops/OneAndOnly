@@ -115,6 +115,7 @@
 	   		$(".imgDiv").remove();
 	   		$(".fileImgYes").attr("src","${path }/img/bg.jpg");
 	   }); */
+	   
    });
    
 </script>
