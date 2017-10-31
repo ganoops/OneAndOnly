@@ -33,7 +33,12 @@ public class FrontController extends HttpServlet {
 		if(key==null) key="list";
 		
 		Action action = map.get(key);
-		action.execute(request, response);
+		try {
+			action.execute(request, response);
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		
 		
 	}

@@ -27,7 +27,7 @@ public interface OneandOnlyDAO {
 	 * @return
 	 * @throws SQLException
 	 */
-	boolean login(String id, String pw) throws SQLException;
+	boolean login(String email, String password) throws SQLException;
 	
 	/**
 	 * 회원 정보 수정
@@ -52,6 +52,14 @@ public interface OneandOnlyDAO {
 	 * @throws SQLException
 	 */
 	int deleteUser(String nickname) throws SQLException;
+	/**
+	 *아이디 중복 체크
+	 *@param email
+	 *@return
+	 *@throws SQLException 
+	 */
+	boolean duplicateIdCheck(String email) throws SQLException;
+	
 	
 	/**
 	 * 계정명으로 검색
@@ -182,6 +190,7 @@ public interface OneandOnlyDAO {
 	 */
 	int insertFollow(String mynic, String nic) throws SQLException;
 	
+	boolean duplicateNickCheck(String nickName) throws SQLException;
 	/**
 	 * 언팔로우하기
 	 * @param mynic

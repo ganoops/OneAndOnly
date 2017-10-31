@@ -7,6 +7,8 @@
 <title>Insert title here</title>
 </head>
 <body>
-
+	죄송합니다. 문제가 발생하였습니다.<br>
+	발생된 문제 : ${requestScope.errorMsg}<br>
+	<a href="javascript:history.back()">뒤로가기</a>
 </body>
 </html>

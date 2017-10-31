@@ -3,6 +3,8 @@ package k4star.oneandonly.model.service;
 import java.sql.SQLException;
 import java.util.List;
 
+import k4star.oneandonly.model.dao.OneandOnlyDAO;
+import k4star.oneandonly.model.dao.OneandOnlyDAOImpl;
 import k4star.oneandonly.model.dto.BoardDTO;
 import k4star.oneandonly.model.dto.CommentDTO;
 import k4star.oneandonly.model.dto.LikeDTO;
@@ -10,7 +12,7 @@ import k4star.oneandonly.model.dto.NoticeDTO;
 import k4star.oneandonly.model.dto.UserDTO;
 
 public class SNSService {
-	//private static DAO dao   = new ElecDaoImpl();
+	private static OneandOnlyDAO dao   = new OneandOnlyDAOImpl();
 	
 	/**
 	 * 회원가입(join)
@@ -18,15 +20,17 @@ public class SNSService {
 	 * @return : 1이면 성공, 아니면 실패
 	 * */
 	public static int join(UserDTO userDTO) throws Exception{
-		return 0;
+		int result = dao.join(userDTO);
+		return result;
 	}
 	/**
 	 * 로그인(login)
 	 * @param : email, pass
 	 * @return : true 성공, false 실패
 	 * */
-	public static boolean login(String email, String pass) throws Exception{
-		return false;
+	public static boolean login(String email, String password) throws Exception{
+		boolean result = dao.login(email, password);
+		return result;
 	}
 	/**
 	 * 회원수정(updateUser)
@@ -92,6 +96,26 @@ public class SNSService {
 	 * */
 	public static List<BoardDTO> selectNewsFeed(String email) throws Exception{
 		return null;
+	}
+	/**
+	 * 이메일 중복 체크
+	 * @param email
+	 * @return true면 가입 가능, false는 중복
+	 * @throws Exception
+	 */
+	public static boolean duplicateIdCheck(String email) throws SQLException{
+		boolean result = dao.duplicateIdCheck(email);
+		return result;
+	}
+	/**
+	 * 닉네임 중복 체크
+	 * @param nickName
+	 * @return true면 가입 가능, false는 중복
+	 * @throws Exception
+	 */
+	public static boolean duplicateNickCheck(String nickName) throws SQLException{
+		boolean result = dao.duplicateNickCheck(nickName);
+		return result;
 	}
 	/**
 	 * 게시물 상세보기

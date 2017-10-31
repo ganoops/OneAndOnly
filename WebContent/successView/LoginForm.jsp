@@ -1,16 +1,18 @@
 <%@ page language = "java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
-
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core"  prefix="c"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt"  prefix="fmt"%>
 <!DOCTYPE html>
 <html>
 <head>
     <meta charset="UTF-8">
     <meta name="robots" content="noindex, nofollow">
-
+	<c:set var="path" value="${pageContext.request.contextPath}" scope="application" />
     <title>login Form</title>
         <meta name="viewport" content="width=device-width, initial-scale=1">
     <link href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+   <script src="${path}/js/jquery-3.2.1.js"></script>
     <style type="text/css">
-
+	
 * {
   margin: 0px auto;
   padding: 0px;
@@ -221,12 +223,37 @@ margin-top: 60px;
 padding: 15px 0px;
 }
 
+.cont_form_sign_up .sign_btn #btn_sign_up { 
+background-color: #ef5350;
+  border: none;
+  padding: 10px;
+width: 150px;
+border-radius:3px;
+text-align : center;
+box-shadow: 1px 5px 20px -5px rgba(0,0,0,0.4);
+  color: #fff;
+margin-top: 10px;
+cursor: pointer;
+}
+.cont_form_sign_up .sign_btn #btn_sign_up2 { 
+background-color: #ef5350;
+  border: none;
+  padding: 10px;
+width: 150px;
+border-radius:3px;
+text-align : center;
+box-shadow: 1px 5px 20px -5px rgba(0,0,0,0.4);
+  color: #fff;
+margin-top: 10px;
+cursor: pointer;
+}
 .btn_sign_up { 
 background-color: #ef5350;
   border: none;
   padding: 10px;
 width: 200px;
 border-radius:3px;
+text-align : center;
 box-shadow: 1px 5px 20px -5px rgba(0,0,0,0.4);
   color: #fff;
 margin-top: 10px;
@@ -305,7 +332,7 @@ z-index: 2;
 .cont_forms_active_login  >.cont_form_login {
 }
 
-.cont_form_sign_up {
+#joinForm .cont_form_sign_up {
   position: absolute;
   width: 320px;
 float: left;
@@ -319,24 +346,23 @@ transition: all 0.5s;
 }
 
   
-.cont_form_sign_up > input {
+#joinForm .cont_form_sign_up > input {
 text-align: left;
-  padding: 15px 5px;
+  padding: 5px 5px;
 margin-left: 10px;
-margin-top: 20px;
+margin-top: 5px;
   width: 260px;
 border: none;
     color: #757575;
 }
-
-.cont_form_sign_up > h2 {
-margin-top: 50px; 
+#joinForm .cont_form_sign_up > h2 {
+margin-top: 40px; 
 font-weight: 400;
   color: #757575;
 }
 
 
-.cont_form_login > input {
+#loginForm .cont_form_login > input {
   padding: 15px 5px;
 margin-left: 10px;
 margin-top: 20px;
@@ -345,13 +371,12 @@ border: none;
 text-align: left;
   color: #757575;
 }
-
-.cont_form_login > h2 {
+#loginForm .cont_form_login > h2 {
 margin-top: 110px; 
 font-weight: 400;
   color: #757575;
 }
-.cont_form_login > a,.cont_form_sign_up > a  {
+#loginForm .cont_form_login > a,.cont_form_sign_up > a  {
   color: #757575;
     position: relative;
     float: left;
@@ -362,6 +387,8 @@ margin-left: 30px;
     <script src="//code.jquery.com/jquery-1.10.2.min.js"></script>
     <script src="//netdna.bootstrapcdn.com/bootstrap/3.0.0/js/bootstrap.min.js"></script>
     <script type="text/javascript">
+    //alert("1");
+    
         window.alert = function(){};
         var defaultCSS = document.getElementById('bootstrap-css');
         function changeCSS(css){
@@ -399,39 +426,57 @@ margin-left: 30px;
     
     <div class="cont_back_info">
        <div class="cont_img_back_grey">
-       <img src="img/bg3.jpg" alt="" />
+       <img src="../img/bg3.jpg" alt="" />
        </div>
        
     </div>
 <div class="cont_forms" >
     <div class="cont_img_back_">
-       <img src="img/bg3.jpg" alt="" />
+       <img src="../img/bg3.jpg" alt="" />
        </div>
+<form id="loginForm" method="post" action="${path}/oao?command=SelectUser">
  <div class="cont_form_login">
 <a href="#" onclick="ocultar_login_sign_up()" ><i class="material-icons">&#xE5C4;</i></a>
    <h2>LOGIN</h2>
- <input type="text" placeholder="Email" />
-<input type="password" placeholder="Password" />
+ <input type="text" placeholder="Email" name="userEmail"/>
+<input type="password" placeholder="Password" name="password"/>
 <button class="btn_login" onclick="cambiar_login()">LOGIN</button>
   </div>
-  
-   <div class="cont_form_sign_up">
-<a href="#" onclick="ocultar_login_sign_up()"><i class="material-icons">&#xE5C4;</i></a>
+  </form>
+  <form id="joinForm" method="post" 
+  enctype="multipart/form-data" action="${path}/oao?command=InsertUser">
+	<div class="cont_form_sign_up">
+	<a href="#" onclick="ocultar_login_sign_up()" ><i class="material-icons">&#xE5C4;</i></a>
      <h2>SIGN UP</h2>
-<input type="text" placeholder="Email" />
-<input type="text" placeholder="User" />
-<input type="password" placeholder="Password" />
-<input type="password" placeholder="Confirm Password" />
-<button class="btn_sign_up" onclick="cambiar_sign_up()">SIGN UP</button>
+     
+<input type="email" placeholder="email@xxxxx.com" name="userEmail" id="userEmail"/>
+<input type="password" placeholder="Password" name="password" id="password"/>
+<input type="password" placeholder="Confirm Password" name="password_confirm" id="password_confirm"/>
+<input type="text" placeholder="phone" name = "phone" id = "phone"/>
+<input type="text" placeholder="introduce" name = "introduce" id = "introduce"/>
+<input type="text" placeholder="nickname" name = "nickname" id = "nickname"/>
+<input type="file" id = "profile_pic" name = "profile_pic" value="프로필 사진"/>
+<div class = "sign_btn" >
 
-  </div>
+<input type="submit" value="회원가입" id="btn_sign_up" />
+<input type="reset" value="다시 입력" id="btn_sign_up2"/>
+</div>
+</div>
+<!-- <button class="btn_sign_up" onclick="cambiar_sign_up()">SIGN UP</button> -->
+</form>
 
+  		</div>
+  		
+  		</div>
+  		
     </div>
     
-  </div>
  </div>
-</div>
+ 
 <script>
+
+
+
 
 
 function cambiar_login() {
@@ -475,12 +520,11 @@ document.querySelector('.cont_form_login').style.display = "none";
   
   }
 
+</script>
 
-
+<script type="text/javascript">
 
 </script>
-	<script type="text/javascript">
 	
-	</script>
 </body>
 </html>
